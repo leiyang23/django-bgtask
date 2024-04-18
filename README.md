@@ -1,5 +1,5 @@
-## Project description
- a Django background task app. 
+## Project
+ A Django background task app. 
 
 ## Usage
 1. install: `pip install bgtask4django`
