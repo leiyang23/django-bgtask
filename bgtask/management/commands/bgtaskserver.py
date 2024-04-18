@@ -72,12 +72,7 @@ class Command(BaseCommand):
         """)
 
         while True:
-            try:
-                events = sel.select()
-                for key, mask in events:
-                    callback = key.data
-                    callback(key.fileobj, mask)
-            except KeyboardInterrupt:
-                sock.close()
-                log.info("bye bye!")
-                break
+            events = sel.select()
+            for key, mask in events:
+                callback = key.data
+                callback(key.fileobj, mask)
