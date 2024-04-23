@@ -15,7 +15,7 @@ WORK_THREADS = config[2]
 
 _queue_size = 100
 
-log = getLogger("bgtask")
+log = getLogger("django.bgtask")
 sel = selectors.DefaultSelector()
 executor = core.Executor(Queue(_queue_size), workers=WORK_THREADS)
 

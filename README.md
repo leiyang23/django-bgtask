@@ -6,11 +6,40 @@ The actuator runs in a separate process communicating with Django via TCP, ensur
 
 ## Usage
 
-1. install: `pip install bgtask4django`
-2. migrate: `python manage.py migrate bgtask`
-3. start server: `python manage.py bgtaskserver`
+### Install bgtask
 
-Notice: Don't forget to register the `bgtask` to the Django `INSTALLED_APPS`.
+```shell
+pip install -U bgtask4django
+```
+
+### Configurations
+
+Add `bgtask` to `INSTALLED_APPS` in settings.py.
+
+```python
+# settings.py
+INSTALLED_APPS = [
+    'bgtask',
+    '...'
+]
+# Configuration should be read first from the Django settings, 
+# and if not found, it should be looked up from the system environment variables.
+BGTASK_SERVER_IP = "127.0.0.1"
+BGTASK_SERVER_PORT = 23323
+BGTASK_WORK_THREADS = 10
+```
+
+### Migrate
+
+```shell
+python manage.py migrate bgtask
+```
+
+### Run server
+`bgtask` run in a separate process, which is the same runtime environment as the Django instance.
+```shell
+python manage.py bgtaskserver
+```
 
 ## How to use in Django?
 
@@ -32,7 +61,8 @@ def send_email(address, title, message=None):
 
 
 def register(request, *args, **kwargs):
-    # some codes...
+    # `submit` will put function's import-path into task-queue by tcp,
+    # if no exception, it will return `task_id`.
     task_id = submit(send_email, "*@*.com", "test", message="this is a test")
     if not task_id:
         print("send email fail, check log for reason")
@@ -45,12 +75,3 @@ def register(request, *args, **kwargs):
     if task.state == StateEnum.FINISH and task.result == ResultEnum.SUCCESS:
         print(pickle.loads(task.return_value))
 ```
-
-## Configure
-
-Configuration should be read first from the Django settings, and if not found, it should be looked up from the system
-environment variables.
-
-- `BGTASK_SERVER_IP:` bgtask server listen address, default `127.0.0.1`
-- `BGTASK_SERVER_PORT:` bgtask server listen port, default `23323`
-- `BGTASK_WORK_THREADS:` thread number for handling task, default `10`

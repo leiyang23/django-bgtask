@@ -9,7 +9,7 @@ from uuid import uuid4
 
 from .models import BgTask, StateEnum, ResultEnum
 
-log = getLogger("bgtask")
+log = getLogger("django.bgtask")
 
 
 class Worker(Thread):

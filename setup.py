@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="bgtask4django",
-    version="1.0.0",
+    version="1.0.1",
     author="leon_yang",
     author_email="leiyang_ace@163.com",
     description="A Django app for background task ",

@@ -149,7 +149,7 @@ LOGGING = {
         },
     },
     'loggers': {  # 日志器
-        'bgtask': {
+        'django.bgtask': {
             'handlers': ['console'],
             'propagate': True,
             'level': 'DEBUG' if DEBUG else 'INFO',
