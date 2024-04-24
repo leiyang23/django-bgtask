@@ -6,13 +6,13 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="bgtask4django",
-    version="1.0.1",
+    version="1.0.2",
     author="leon_yang",
     author_email="leiyang_ace@163.com",
     description="A Django app for background task ",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/pypa/leiyang23/django-bgtask",
+    url="https://github.com/leiyang23/django-bgtask",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",

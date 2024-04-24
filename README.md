@@ -1,7 +1,6 @@
 ## Project
 
-A Django background task app.  
-By Bgtask, we can conveniently execute asynchronous tasks, and obtain the return data.  
+A Django background task app. By Bgtask, we can conveniently execute asynchronous tasks, and obtain the return data. 
 The actuator runs in a separate process communicating with Django via TCP, ensuring it does not impact the main logic.
 
 ## Usage
